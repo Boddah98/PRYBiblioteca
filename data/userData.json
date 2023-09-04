@@ -1,0 +1,13 @@
+[{
+		"userID":	"1",
+		"userName":	"Andy Cruz",
+		"address":	"Cariari, Pococi "
+	}, {
+		"userID":	"2",
+		"userName":	"Enzo Morales",
+		"address":	"Cieneguita, Limon"
+	}, {
+		"userID":	"3",
+		"userName":	"Allan Rodriguez",
+		"address":	"Limon, Limon"
+	}]

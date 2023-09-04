@@ -1,0 +1,4 @@
+Cien años de soledad|Gabriel García Márquez|1967|Realismo mágico|Esta novela cuenta la historia|4
+1984|George Orwell|1949|Distopía|En un futuro totalitario, el protagonista lucha contra el régimen|3
+Orgullo y prejuicio|Jane Austen|1813|Novela romántica|La historia sigue Elizabeth Bennet mientras|2
+Crónica de una muerte anunciada|Gabriel García Márquez|1981|Novela contemporánea| La historia se centra en el asesinato de Santiago Nasar, un joven de un pueblo caribeño, cuya muerte es anunciada previamente pero nadie logra evitarla debido a la rígida estructura social y cultural de la comunidad. A lo largo de la novela, se exploran temas como el honor, la fatalidad y la inevitabilidad del destino.|5
