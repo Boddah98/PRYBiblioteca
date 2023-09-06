@@ -2,11 +2,13 @@
 #define FALSE 0
 
 struct LibroLiteratura{
+	int id;
 	char* nombre;
     char* autor;
     char* annoPublicacion;
     char* genero;
     char* resumen;
+	char* disponible;
 	struct LibroLiteratura *sig;
 }typedef Libro;
 

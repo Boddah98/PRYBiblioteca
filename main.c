@@ -5,10 +5,6 @@
 #include "Libro.h"
 #include "Usuario.h"
 
-int libroExiste(char* nombreLibro){
-	return FALSE;
-}
-
 // Función para verificar si una cadena contiene solo dígitos
 int esNumero(const char *cadena) {
     for (int i = 0; cadena[i] != '\0'; i++) {
@@ -19,55 +15,13 @@ int esNumero(const char *cadena) {
     return TRUE;
 }
 
-void guardarLibro(Libro* libroNuevo){
-	//*lo guarda
-}
-
 void gestionCatalogo() {
-	int salirNombre = TRUE;
-	int salirCantidad = TRUE;
+	char direccion[50];
 
-	char nombre[50];
-	char autor[50];
-	char anno[50];
-	char genero[50];
-	char resumen[200];
-	char cantidad[50];
+	printf("Por favor ingrese la direccion: ");
+	scanf(" %[^\t\n]s", &direccion);
 
-	printf("\n-----------------------\n| Gestion de catalogo |\n-----------------------\nPara poder registrar un libro nuevo en el sistema por favor ingrese los siguientes datos.\n\n");
-	while(salirNombre){
-		printf("Ingrese el nombre del libro: ");
-		scanf(" %[^\t\n]s", &nombre);
-		if(libroExiste(nombre)){
-			printf("Error: Ese libro ya fue registrado en el sistema. Por favor ingrese el nombre de un libro nuevo.");
-		}else {
-			salirNombre = FALSE;
-		}
-	}
-
-	printf("Ingrese el nombre del autor del libro: ");
-	scanf(" %[^\t\n]s", &autor);
-	printf("Ingrese el ano de publicacion del libro: ");
-	scanf(" %[^\t\n]s", &anno);
-	printf("Ingrese el genero del libro: ");
-	scanf(" %[^\t\n]s", &genero);
-	printf("Ingrese el resumen del libro: ");
-	scanf(" %[^\t\n]s", &resumen);
-
-	while(salirCantidad){
-		printf("Ingrese la cantidad de ejemplares del libro: ");
-		scanf(" %[^\t\n]s", &cantidad);
-
-		if (esNumero(cantidad)) {
-            salirCantidad = FALSE;
-        } else {
-            printf("Error: Debe ingresar un numero valido para la cantidad.\n");
-        }
-	}
-
-	Libro* libroNuevo = crearLibro(nombre, autor, anno, genero, resumen);
-	guardarLibro(libroNuevo);
-	printf("\n-> El libro ha sido registrado correctamente en el sistema\n\n");
+	printf("\n-> Mostrando información de lectura...\n\n");
 }
 
 int usuarioExiste(char* idUsuario){
