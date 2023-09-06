@@ -5,9 +5,11 @@
 #include "cjson/cJSON.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include "book.h"
+
 const char *bookFileName = "./data/bookData.json";
 
-static char* getFileContent(const char* filePath){
+char* getFileContent(const char* filePath){
     FILE* file = fopen(filePath, "r");
     if (file == NULL) {
         printf("No se pudo abrir el archivo.\n");
@@ -33,6 +35,56 @@ static char* getFileContent(const char* filePath){
     
     return fileContent;
 }
+void insertBook(char** atributeArray){    
+    //The book struct and cJSON are create for add to the json file
+    book newBook = newBookFromArray(atributeArray); 
+    cJSON* newBookJson = cJSON_CreateObject();
+
+    //then, the atributes are asigned to the cJSON    
+    cJSON_AddStringToObject(newBookJson, "name", newBook.name);
+    cJSON_AddStringToObject(newBookJson, "author", newBook.author);    
+    char strBookYear[4];
+    sprintf( strBookYear,"%d", newBook.year);
+    cJSON_AddStringToObject(newBookJson, "year", strBookYear);
+    cJSON_AddStringToObject(newBookJson, "genre", newBook.genre);
+    cJSON_AddStringToObject(newBookJson, "resume", newBook.resume);
+    char strBookQuantity[4];
+    sprintf( strBookQuantity,"%d", newBook.quantity);
+    cJSON_AddStringToObject(newBookJson, "quantity",  strBookQuantity);
+   
+    //cJSON* object = cJSON_GetObjectItemCaseSensitive(jsonObject, "userName");
+    cJSON* stockAtribute = cJSON_CreateObject();
+    for(int i=1; i<=newBook.quantity; i++){ 
+        cJSON* bookCopy = cJSON_CreateObject();
+        char strBookId[4];
+        sprintf( strBookId,"%d", i);
+        cJSON_AddStringToObject(bookCopy, "bookId", strBookId);
+        cJSON_AddStringToObject(bookCopy, "available", "true");
+        char* bookprueba = cJSON_Print(bookCopy);
+        printf("Ejemplar:\n %s \n",bookprueba);
+        //cJSON_AddItemToObject(stockAtribute,bookCopy);
+    }
+
+    char* strStock = cJSON_Print(stockAtribute);
+    //cJSON_AddStringToObject(newBookJson, "stock",  strStock);
+    //strStock = cJSON_Print(newBookJson);
+    //printf("%s\n",strStock);
+    //get the json file content for parse
+    char* jsonContent = getFileContent(bookFileName);
+    cJSON* jsonObject = cJSON_Parse(jsonContent);
+    //jsonObject = jsonObject->child; 
+    //jsonObject = cJSON_GetObjectItemCaseSensitive(jsonObject, "stock");
+
+    char* jsonString = cJSON_Print(jsonObject);
+    /*
+    for(int i=0; i<6;i++){       
+        printf("value: %s\n",atributeArray[i]);                
+    }   
+    printf("%s\n", jsonString);
+    printf("%s\n", jsonContent);    
+    */
+    
+}
 bool isOnBatch(char* nameAtribute){
     
     char* fileBooksContent = getFileContent(bookFileName);
@@ -50,44 +102,53 @@ bool isOnBatch(char* nameAtribute){
         char *bookName = object->valuestring;
         //printf("Name: %s\n", object->valuestring);
         if (strcmp(bookName, nameAtribute) == 0){
-            printf("Name: %s true\n", bookName);
+            printf("Este libro ya esta en stock\n\n");
             return true;
             
         }
+        
         jsonObject = jsonObject->next;
     }
     free(fileBooksContent);
     cJSON_Delete(jsonObject);
+    printf("Este libro no esta en stock\n\n");
     return false;
 }
 
 bool determineLine(char* lineChar){
-    printf("buscando\n");
+
     // Variables required for parsing each separate atribute
     char* atribute = NULL;
-    size_t atributeSize = 0;
-    // For manage the order of the loop
-    bool isOn = false;
-    bool possibleToFound = true;
+    size_t atributeSize = 0;    
+    
     //For manage the atributes of the book if is not found in the batch
     char **bookData = (char **)malloc(6 * sizeof(char *));
-    int wordIndex=0;
+    int arrayIndex=0;
+    char* chr = lineChar;
+    int lenght = strlen(lineChar)+1;
+    for(char* chr = lineChar; lenght!=0; *chr++){        
     
-    for(char* chr = lineChar; *chr!='\0'; *chr++){
-        
         atributeSize++;
-        if (*chr=='|'){
-            atribute = (char*)realloc(atribute, atributeSize);
-            atribute[atributeSize - 1] = '\0';
-            printf("Nombre de libro: %s\n", atribute);
-            if(isOnBatch(atribute)){
-                printf("%s\n","is on");
-                isOn = true;
-                strcpy(bookData[wordIndex], atribute);
-                return false;
-            }
+        if (*chr=='|' || *chr == '\0' ){
             
-            free(atribute);
+            atribute = (char*)realloc(atribute, atributeSize);
+            atribute[atributeSize - 1] = '\0';            
+            
+            //the [0] atribute is name
+            if (arrayIndex==0){
+                printf("Nombre de libro: %s\n", atribute);
+                if(isOnBatch(atribute)==true){
+                                                           
+                    return true;
+                }
+            }
+            //add the new atribute to the array
+            bookData[arrayIndex] = (char *)malloc(strlen(atribute) + 1);
+            strcpy(bookData[arrayIndex], atribute); 
+                                     
+            //set data
+            free(atribute);            
+            arrayIndex++;
             atribute = NULL;
             atributeSize = 0;
             
@@ -95,10 +156,18 @@ bool determineLine(char* lineChar){
             atribute = (char*)realloc(atribute, atributeSize);
             atribute[atributeSize - 1] = *chr;
         } 
+        lenght--;
     }
+    /*
+    atribute = (char*)realloc(atribute, atributeSize);
+    atribute[atributeSize - 1] = '\0';
+    bookData[arrayIndex] = (char *)malloc(strlen(atribute) + 1);
+    bookData[arrayIndex] = atribute;
+    */
+    insertBook(bookData);
     return false;
 }
-void insertBookBatch(const char* fileDocName) {
+void analizeBookBatch(const char* fileDocName) {
     char* dataBatch = getFileContent(fileDocName);
     if (dataBatch == NULL) {
         fprintf(stderr, "Error al leer el archivo.\n");
@@ -117,8 +186,9 @@ void insertBookBatch(const char* fileDocName) {
             line = (char*)realloc(line, lineSize);
             line[lineSize - 1] = '\0';
 
-            printf("Línea: %s\n", line);
-            determineLine(line);
+            printf("Analizando linea: \n");
+            bool ret = determineLine(line);
+            
             free(line);
             line = NULL;
             lineSize = 0;

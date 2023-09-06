@@ -3,29 +3,24 @@
 
 typedef struct book{
     int bookId;
-    char name; 
-    char author;  
+    char* name; 
+    char* author;  
     int year;
-    char genre;  
-    char resume; 
+    char* genre;  
+    char* resume; 
     int quantity;
 }book;
-book newBook(
-    int pBookId,
-    char pName, 
-    char pAuthor, 
-    int pYear, 
-    char pGenre, 
-    char pResume){
 
-        book newBook;
-        newBook.bookId = pBookId;
-        newBook.name = pName;
-        newBook.author = pAuthor;
-        newBook.year = pYear;
-        newBook.genre = pGenre;
-        newBook.resume = pResume;
+book newBookFromArray(char** atributeArray){
+    book newBook; 
+    newBook.name = atributeArray[0];
+    newBook.author = atributeArray[1];
+    int year = atoi(atributeArray[2]);
+    newBook.year = year;
+    newBook.genre = atributeArray[3];
+    newBook.resume = atributeArray[4];
+    newBook.quantity = atoi(atributeArray[5]);
     
-        return newBook;
+    return newBook;
 }
 #endif 
