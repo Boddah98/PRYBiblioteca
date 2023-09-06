@@ -4,36 +4,10 @@
 #include "cjson/cJSON.h"
 #include <stdlib.h>
 #include "user.h"
+#include "bookManagement.h"
 
 
 const char *userFileName = "./data/userData.json";
-
-static char* getFileContent1(const char* filePath){
-    FILE* file = fopen(filePath, "r");
-    if (file == NULL) {
-        printf("No se pudo abrir el archivo.\n");
-        return NULL;
-    }
-
-    fseek(file, 0, SEEK_END);
-    long fileSize = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    char* fileContent = (char*)malloc(fileSize + 1);
-    if (fileContent == NULL) {
-        printf("No se pudo asignar memoria.\n");
-        fclose(file);
-        return NULL;
-    }
-
-    fread(fileContent, 1, fileSize, file);
-    fclose(file);
-    fileContent[fileSize] = '\0';
-    
-    
-    
-    return fileContent;
-}
 
 void printUserData(){
     char* fileContent = getFileContent(userFileName);
@@ -67,8 +41,8 @@ void insertUser(){
     
     //Getting userData for add a new element
     char* fileContent = getFileContent(userFileName);
-    cJSON* jsonUserData = cJSON_Parse(fileContent); ;    
-    char* jsonChar = cJSON_Print(jsonUserData);    
+    cJSON* jsonUserData = cJSON_Parse(fileContent);     
+  
 
     cJSON_AddItemToArray(jsonUserData,userJson);
         

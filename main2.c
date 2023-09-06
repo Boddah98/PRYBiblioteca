@@ -11,6 +11,6 @@ int main(){
     //insertDataBatch();
     //getFileData()
     const char* filePath = "addFile.txt";
-    insertBookBatch(filePath);
+    analizeBookBatch(filePath);
     return 0;
 }
