@@ -3,11 +3,11 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "bookManagement.h"
-#include "book.h"
+
 #include "userManagement.h"
 
 int main(){        
-    //printUserData();
+    //printBookData();
     //insertDataBatch();
     //getFileData()
     const char* filePath = "addFile.txt";

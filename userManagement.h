@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "cjson/cJSON.h"
 #include <stdlib.h>
-#include "user.h"
 #include "bookManagement.h"
 
 
@@ -25,18 +24,22 @@ void printUserData(){
     free(fileContent);
     cJSON_Delete(jsonObject);
 }
+bool checkForUserID(char* idForEvaluate){
+    char* fileContent = getFileContent(userFileName);
+    cJSON* jsonObject =  cJSON_Parse(fileContent); 
 
+    return false;
+}
 void insertUser(){
     //Creating data for add
     int userId = 5;
     char* name = "Allan Turing";
     char* address = "England";
-    user newUser = getNewUser(userId, name, address);
     cJSON* userJson = cJSON_CreateObject();
 
     //cJSON_AddStringToObject(userJson, "userId", (char*)newUser.userId);
-    cJSON_AddStringToObject(userJson, "userName", newUser.userName);
-    cJSON_AddStringToObject(userJson, "address", newUser.address);
+    cJSON_AddStringToObject(userJson, "userName", name);
+    cJSON_AddStringToObject(userJson, "address", address);
 
     
     //Getting userData for add a new element
@@ -57,7 +60,7 @@ void insertUser(){
     fclose(file);
     cJSON_Delete(jsonUserData);
     
-    printf(": %d, %s, %s Added \n", newUser.userId, newUser.userName, newUser.address);
+    printf(": %d, %s, %s Added \n", userId, name, address);
 }
 
 #endif
