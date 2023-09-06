@@ -19,6 +19,10 @@ int esNumero(const char *cadena) {
     return TRUE;
 }
 
+void guardarLibro(Libro* libroNuevo){
+	//*lo guarda
+}
+
 void gestionCatalogo() {
 	int salirNombre = TRUE;
 	int salirCantidad = TRUE;
@@ -62,11 +66,16 @@ void gestionCatalogo() {
 	}
 
 	Libro* libroNuevo = crearLibro(nombre, autor, anno, genero, resumen);
+	guardarLibro(libroNuevo);
 	printf("\n-> El libro ha sido registrado correctamente en el sistema\n\n");
 }
 
 int usuarioExiste(char* idUsuario){
 	return FALSE;
+}
+
+void guardarUsuario(Usuario* usuarioNuevo){
+	//*lo guarda
 }
 
 void gestionUsuario(){
@@ -94,6 +103,7 @@ void gestionUsuario(){
 	scanf(" %[^\t\n]s", &direccion);
 
 	Usuario* usuarioNuevo = crearUsuario(id, nombre, direccion);
+	guardarUsuario(usuarioNuevo);
 	printf("\n-> El usuario ha sido registrado correctamente en el sistema\n\n");
 }
 
