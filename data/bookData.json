@@ -1,109 +1,78 @@
-    [
-        {
-            
-            "name" : "Cien años de soledad",
-            "author" : "Gabriel Garcia Marquez",
-            "year" : "1987",
-            "genre" : "Realismo magico",
-            "resume" : " la historia de la familia Buendía en el ficticio pueblo Macondo a lo largo de varias generaciones. La obra mezcla realismo mágico y crítica social para explorar temas como el amor, la soledad, la violencia y el poder. La novela sigue la vida de los Buendía, marcada por relaciones incestuosas, profecías y eventos misteriosos. Finalmente, la historia culmina con la última generación y la caída de la casa Buendía, simbolizando la repetición cíclica de la historia en América Latina.",
-            "quantity" :"4",
-            "stock" : [
-                {
-                    "bookId" : 1,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 2,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 3,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 4,
-                    "available" : "true"
-                }
-            ]
-        },
-        {        
-            "name" : "1984",
-            "author" : "George Orwel",
-            "year" : "1949",
-            "genre" : "Distopía",
-            "resume" : "1984 es una novela distópica de George Orwell que se desarrolla en un mundo totalitario bajo el gobierno del Partido y su líder, Big Brother. La historia sigue a Winston Smith, un hombre que trabaja en el Ministerio de la Verdad y lucha por mantener su individualidad en un estado de vigilancia constante. La novela explora temas como la manipulación del lenguaje, la represión del pensamiento y la erosión de la verdad. Winston se rebela contra el régimen opresivo, pero finalmente es sometido a la tortura y la conformidad total. 1984 es una advertencia sobre el poder absoluto y la pérdida de libertad en una sociedad controlada por el Estado.",
-            "quantity" :"4",
-            "stock" : [
-                {
-                    "bookId" : 1,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 2,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 3,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 4,
-                    "available" : "true"
-                }
-            ]
-        },
-        {
-            
-            "name" : "Orgullo y prejuicio",
-            "author" : "Jane Austen",
-            "year" : "1813",
-            "genre" : "Novela romántica",
-            "resume" : "Orgullo y Prejuicio de Jane Austen es una novela clásica que gira en torno a las complejas relaciones sociales y románticas en la Inglaterra del siglo XIX. La historia se centra en Elizabeth Bennet, una joven inteligente y de espíritu libre, y el orgulloso Sr. Darcy. A medida que sus caminos se cruzan y chocan, superan sus prejuicios iniciales para enamorarse",
-            "quantity" :"4",
-            "stock" : [
-                {
-                    "bookId" : 1,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 2,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 3,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 4,
-                    "available" : "true"
-                }
-            ]
-        },
-        {
-
-            "name" : "La llama de Alejandria",
-            "author" : "Javier Sierra",
-            "year" : "2006",
-            "genre" : "Novela histórica",
-            "resume" : "La historia se desarrolla en el año 391 d.C. y sigue a la astrónoma y filósofa Hipatia de Alejandría, quien lucha por preservar el conocimiento en un mundo en pleno declive del Imperio Romano y los primeros signos de la Edad Media. El libro mezcla elementos de misterio, historia y espiritualidad, explorando la persecución de la sabiduría en tiempos tumultuosos.",
-            "quantity" :"4",
-            "stock" : [
-                {
-                    "bookId" : 1,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 2,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 3,
-                    "available" : "true"
-                },
-                {
-                    "bookId" : 4,
-                    "available" : "true"
-                }
-            ]
-        }
-    ]
+[{
+		"name":	"Cien años de soledad",
+		"author":	"Gabriel Garcia Marquez",
+		"year":	"1987",
+		"genre":	"Realismo magico",
+		"resume":	" la historia de la familia Buendía en el ficticio pueblo Macondo a lo largo de varias generaciones. La obra mezcla realismo mágico y crítica social para explorar temas como el amor, la soledad, la violencia y el poder. La novela sigue la vida de los Buendía, marcada por relaciones incestuosas, profecías y eventos misteriosos. Finalmente, la historia culmina con la última generación y la caída de la casa Buendía, simbolizando la repetición cíclica de la historia en América Latina.",
+		"quantity":	"4",
+		"stock":	[{
+				"bookId":	1,
+				"available":	"true"
+			}, {
+				"bookId":	2,
+				"available":	"true"
+			}, {
+				"bookId":	3,
+				"available":	"true"
+			}, {
+				"bookId":	4,
+				"available":	"true"
+			}]
+	}, {
+		"name":	"1984",
+		"author":	"George Orwel",
+		"year":	"1949",
+		"genre":	"Distopía",
+		"resume":	"1984 es una novela distópica de George Orwell que se desarrolla en un mundo totalitario bajo el gobierno del Partido y su líder, Big Brother. La historia sigue a Winston Smith, un hombre que trabaja en el Ministerio de la Verdad y lucha por mantener su individualidad en un estado de vigilancia constante. La novela explora temas como la manipulación del lenguaje, la represión del pensamiento y la erosión de la verdad. Winston se rebela contra el régimen opresivo, pero finalmente es sometido a la tortura y la conformidad total. 1984 es una advertencia sobre el poder absoluto y la pérdida de libertad en una sociedad controlada por el Estado.",
+		"quantity":	"4",
+		"stock":	[{
+				"bookId":	1,
+				"available":	"true"
+			}, {
+				"bookId":	2,
+				"available":	"true"
+			}, {
+				"bookId":	3,
+				"available":	"true"
+			}, {
+				"bookId":	4,
+				"available":	"true"
+			}]
+	}, {
+		"name":	"Orgullo y prejuicio",
+		"author":	"Jane Austen",
+		"year":	"1813",
+		"genre":	"Novela romántica",
+		"resume":	"La historia sigue Elizabeth Bennet mientras",
+		"quantity":	"2",
+		"stock":	[{
+				"bookId":	"1",
+				"available":	"true"
+			}, {
+				"bookId":	"2",
+				"available":	"true"
+			}]
+	}, {
+		"name":	"Crónica de una muerte anunciada",
+		"author":	"Gabriel García Márquez",
+		"year":	"1981",
+		"genre":	"Novela contemporánea",
+		"resume":	" La historia se centra en el asesinato de Santiago Nasar, un joven de un pueblo caribeño, cuya muerte es anunciada previamente pero nadie logra evitarla debido a la rígida estructura social y cultural de la comunidad. A lo largo de la novela, se exploran temas como el honor, la fatalidad y la inevitabilidad del destino.",
+		"quantity":	"5",
+		"stock":	[{
+				"bookId":	"1",
+				"available":	"true"
+			}, {
+				"bookId":	"2",
+				"available":	"true"
+			}, {
+				"bookId":	"3",
+				"available":	"true"
+			}, {
+				"bookId":	"4",
+				"available":	"true"
+			}, {
+				"bookId":	"5",
+				"available":	"true"
+			}]
+	}]

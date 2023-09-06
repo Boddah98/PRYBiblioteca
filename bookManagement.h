@@ -35,55 +35,52 @@ char* getFileContent(const char* filePath){
     
     return fileContent;
 }
-void insertBook(char** atributeArray){    
+void insertBook(char** atributeArray){   
+    char strBookYear[4], strBookQuantity[4]; 
     //The book struct and cJSON are create for add to the json file
     book newBook = newBookFromArray(atributeArray); 
     cJSON* newBookJson = cJSON_CreateObject();
 
     //then, the atributes are asigned to the cJSON    
     cJSON_AddStringToObject(newBookJson, "name", newBook.name);
-    cJSON_AddStringToObject(newBookJson, "author", newBook.author);    
-    char strBookYear[4];
+    cJSON_AddStringToObject(newBookJson, "author", newBook.author);            
     sprintf( strBookYear,"%d", newBook.year);
     cJSON_AddStringToObject(newBookJson, "year", strBookYear);
     cJSON_AddStringToObject(newBookJson, "genre", newBook.genre);
     cJSON_AddStringToObject(newBookJson, "resume", newBook.resume);
-    char strBookQuantity[4];
     sprintf( strBookQuantity,"%d", newBook.quantity);
     cJSON_AddStringToObject(newBookJson, "quantity",  strBookQuantity);
    
-    //cJSON* object = cJSON_GetObjectItemCaseSensitive(jsonObject, "userName");
-    cJSON* stockAtribute = cJSON_CreateObject();
+   //Its required to have array for the copys 
+    cJSON* stockAtribute = cJSON_CreateArray();
+    cJSON_AddItemToObject(newBookJson,"stock", stockAtribute);
+
     for(int i=1; i<=newBook.quantity; i++){ 
         cJSON* bookCopy = cJSON_CreateObject();
         char strBookId[4];
         sprintf( strBookId,"%d", i);
         cJSON_AddStringToObject(bookCopy, "bookId", strBookId);
         cJSON_AddStringToObject(bookCopy, "available", "true");
-        char* bookprueba = cJSON_Print(bookCopy);
-        printf("Ejemplar:\n %s \n",bookprueba);
-        //cJSON_AddItemToObject(stockAtribute,bookCopy);
+        cJSON_AddItemToArray(stockAtribute,bookCopy);
+        
     }
 
-    char* strStock = cJSON_Print(stockAtribute);
-    //cJSON_AddStringToObject(newBookJson, "stock",  strStock);
-    //strStock = cJSON_Print(newBookJson);
-    //printf("%s\n",strStock);
-    //get the json file content for parse
+    
+    
+    //The last json content is needed for add the new book 
     char* jsonContent = getFileContent(bookFileName);
     cJSON* jsonObject = cJSON_Parse(jsonContent);
-    //jsonObject = jsonObject->child; 
-    //jsonObject = cJSON_GetObjectItemCaseSensitive(jsonObject, "stock");
-
-    char* jsonString = cJSON_Print(jsonObject);
-    /*
-    for(int i=0; i<6;i++){       
-        printf("value: %s\n",atributeArray[i]);                
-    }   
-    printf("%s\n", jsonString);
-    printf("%s\n", jsonContent);    
-    */
+    cJSON_AddItemToArray(jsonObject,newBookJson);
     
+
+    FILE* file = fopen(bookFileName, "w" );
+    char* strBookJson = cJSON_Print(jsonObject);
+
+    fprintf(file, "%s", strBookJson);    
+    free(strBookJson);
+    fclose(file);
+    cJSON_Delete(newBookJson);
+    printf("El libro: %s se ha agregado. %d ejemplares disponibles\n", newBook.name,newBook.quantity);
 }
 bool isOnBatch(char* nameAtribute){
     
@@ -177,7 +174,7 @@ void analizeBookBatch(const char* fileDocName) {
     // Variables required for parsing each separate line
     char* line = NULL;
     size_t lineSize = 0;
-
+    printf("Abriendo addFile.txt en busqueda de libros por agregar\n");
     for (char* chr = dataBatch; *chr != '\0'; chr++) {
         lineSize++;
 
