@@ -1,15 +1,33 @@
 [{
     "loanID" : "1",
     "bookID" : "1",
-    "userID" : "1",
-    "nameBook" : "Crónica de una muerte anunciada",
+    "userID" : "117040072",
+    "bookName" : "Crónica de una muerte anunciada",
     "deliveryDate" : "",
-    "deliveryStatus" : ""    
+    "deliveryStatus" : "finalizado",
+    "rate": "525"    
 },{
     "loanID" : "2",
+    "bookID" : "1",
+    "userID" : "3",
+    "bookName" : "Cien años de soledad",
+    "deliveryDate" : "",
+    "deliveryStatus" : "activo",
+    "rate": "450"    
+},{
+    "loanID" : "3",
     "bookID" : "2",
     "userID" : "2",
-    "nameBook" : "Cien años de soledad",
+    "bookName" : "Cien años de soledad",
     "deliveryDate" : "",
-    "date" : ""
+    "deliveryStatus" : "activo",
+    "rate": "300"    
+},{
+    "loanID" : "4",
+    "bookID" : "2",
+    "userID" : "3",
+    "bookName" : "Cien años de soledad",
+    "deliveryDate" : "",
+    "deliveryStatus" : "activo",
+    "rate": "600"    
 }]

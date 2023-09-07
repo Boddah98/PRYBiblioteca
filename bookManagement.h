@@ -5,6 +5,7 @@
 #include "cjson/cJSON.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h> 
 
 
 const char *bookFileName = "./data/bookData.json";
@@ -43,12 +44,10 @@ void insertBook(char** atributeArray){
 
     //then, the atributes are asigned to the cJSON    
     cJSON_AddStringToObject(newBookJson, "name", atributeArray[0]);
-    cJSON_AddStringToObject(newBookJson, "author", atributeArray[1]);            
-    
+    cJSON_AddStringToObject(newBookJson, "author", atributeArray[1]);                
     cJSON_AddStringToObject(newBookJson, "year", atributeArray[2]);
     cJSON_AddStringToObject(newBookJson, "genre", atributeArray[3]);
-    cJSON_AddStringToObject(newBookJson, "resume", atributeArray[4]);
-    
+    cJSON_AddStringToObject(newBookJson, "resume", atributeArray[4]);    
     cJSON_AddStringToObject(newBookJson, "quantity",   atributeArray[5]);
    
    //Its required to have array for the copys 
@@ -64,24 +63,21 @@ void insertBook(char** atributeArray){
         cJSON_AddItemToArray(stockAtribute,bookCopy);
         
     }
-
-    
-    
-    //The last json content is needed for add the new book 
+    //The last json content is readed for concat the new book 
     char* jsonContent = getFileContent(bookFileName);
     cJSON* jsonObject = cJSON_Parse(jsonContent);
     cJSON_AddItemToArray(jsonObject,newBookJson);
-    
-
+    //Then the content is rewrite  
     FILE* file = fopen(bookFileName, "w" );
     char* strBookJson = cJSON_Print(jsonObject);
-
-    fprintf(file, "%s", strBookJson);    
-    free(strBookJson);
+    fprintf(file, "%s", strBookJson);        
     fclose(file);
+    //clear memory
+    free(strBookJson);
     cJSON_Delete(newBookJson);
     printf("El libro: %s se ha agregado. %d ejemplares disponibles\n",atributeArray[0],atoi(atributeArray[5]));
 }
+
 bool isOnBatch(char* nameAtribute){
     
     char* fileBooksContent = getFileContent(bookFileName);
@@ -100,10 +96,8 @@ bool isOnBatch(char* nameAtribute){
         //printf("Name: %s\n", object->valuestring);
         if (strcmp(bookName, nameAtribute) == 0){
             printf("Este libro ya esta en stock\n\n");
-            return true;
-            
-        }
-        
+            return true;            
+        }        
         jsonObject = jsonObject->next;
     }
     free(fileBooksContent);
@@ -155,12 +149,7 @@ bool determineLine(char* lineChar){
         } 
         lenght--;
     }
-    /*
-    atribute = (char*)realloc(atribute, atributeSize);
-    atribute[atributeSize - 1] = '\0';
-    bookData[arrayIndex] = (char *)malloc(strlen(atribute) + 1);
-    bookData[arrayIndex] = atribute;
-    */
+    //With the array full of the line data, insertBook() funct writes at the json file    
     insertBook(bookData);
     return false;
 }
@@ -184,12 +173,11 @@ void analizeBookBatch(const char* fileDocName) {
             line[lineSize - 1] = '\0';
 
             printf("Analizando linea: \n");
-            bool ret = determineLine(line);
-            
+            bool ret = determineLine(line);            
             free(line);
             line = NULL;
             lineSize = 0;
-            //return;
+            
         } else {
             // concat
             line = (char*)realloc(line, lineSize);
@@ -210,7 +198,7 @@ void printBookData(){
     if (jsonObject == NULL) {
         printf("Error al analizar el archivo JSON.\n");
         free(fileContent);
-        return;
+        
     }
         
     jsonObject = jsonObject->child; 

@@ -3,10 +3,11 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "bookManagement.h"
-
+#include "loanManagement.h"
 #include "userManagement.h"
 
-int main(){        
+int main(){
+    /*
     char * userId = "115040072";
     char* name = "Maria Turing";
     char* address = "England";
@@ -15,6 +16,7 @@ int main(){
     printUserData();
     //const char* filePath = "addFile.txt";
     //analizeBookBatch(filePath);
-
+    */           
+    printLoanData();
     return 0;
 }
