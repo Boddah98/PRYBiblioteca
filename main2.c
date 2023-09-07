@@ -2,6 +2,7 @@
 #include "cjson/cJSON.h"
 #include <dirent.h>
 #include <stdlib.h>
+#include "Libro.h"
 #include "bookManagement.h"
 #include "loanManagement.h"
 #include "userManagement.h"
@@ -16,7 +17,7 @@ int main(){
     printUserData();
     //const char* filePath = "addFile.txt";
     //analizeBookBatch(filePath);
-    */           
-    printLoanData();
+    */        
+    printBookData();
     return 0;
 }

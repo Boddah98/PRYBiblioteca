@@ -2,7 +2,7 @@
 #define FALSE 0
 
 struct LibroLiteratura{
-	int id;
+	char* id;
 	char* nombre;
     char* autor;
     char* annoPublicacion;
@@ -12,13 +12,15 @@ struct LibroLiteratura{
 	struct LibroLiteratura *sig;
 }typedef Libro;
 
-Libro* crearLibro(char* pNombre, char* pAutor, char* pAnnoPublicacion, char* pGenero, char* pResumen){
+Libro* crearLibro(char* pId, char* pNombre, char* pAutor, char* pAnnoPublicacion, char* pGenero, char* pResumen, char* pAvailable){
 	Libro* libroNuevo = (Libro*) malloc (sizeof(Libro));
+	libroNuevo-> id = pId;
 	libroNuevo-> nombre = pNombre;
     libroNuevo-> autor = pAutor;
     libroNuevo-> annoPublicacion = pAnnoPublicacion;
     libroNuevo-> genero = pGenero;
     libroNuevo-> resumen = pResumen;
+	libroNuevo-> disponible = pAvailable;
 	libroNuevo-> sig = NULL;
 	return libroNuevo;
 }
@@ -57,7 +59,7 @@ void imprimirListaLibros(ListaLibros *lista) {
 
 	if(libroActual != NULL) {
 		while(libroActual != NULL){
-			printf("Nombre: %s \nAutor: %s \nAno de publicacion: %s \nGenero: %s \nResumen: %s \n\n", libroActual->nombre, libroActual->autor, libroActual->annoPublicacion,  libroActual->genero, libroActual->resumen);
+			printf("ID: %s \nNombre: %s \nAutor: %s \nAno de publicacion: %s \nGenero: %s \nResumen: %s \nDisponibilidad: %s \n\n", libroActual->id, libroActual->nombre, libroActual->autor, libroActual->annoPublicacion,  libroActual->genero, libroActual->resumen, libroActual->disponible);
 			libroActual = libroActual->sig;
 		}
 	} else {

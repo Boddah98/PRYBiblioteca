@@ -190,13 +190,60 @@ void analizeBookBatch(const char* fileDocName) {
     free(line);
 }
 
-void printBookData(){
+void loadBookData(){
     char* fileContent = getFileContent(bookFileName);
     
     cJSON* jsonObject =  cJSON_Parse(fileContent); 
 
     if (jsonObject == NULL) {
         printf("Error al analizar el archivo JSON.\n");
+        free(fileContent);
+        
+    }
+        
+    jsonObject = jsonObject->child;
+
+    cJSON* name;
+    cJSON* author;
+    cJSON* year;
+    cJSON* genre;
+    cJSON* resume;
+    cJSON* stock;
+    cJSON* bookId;
+    cJSON* available;
+    Libro* libroNuevo;
+    ListaLibros* listaLibros = crearListaLibros();
+
+    while (jsonObject) {
+        name = cJSON_GetObjectItemCaseSensitive(jsonObject, "name");
+        author = cJSON_GetObjectItemCaseSensitive(jsonObject, "author");
+        year = cJSON_GetObjectItemCaseSensitive(jsonObject, "year");
+        genre = cJSON_GetObjectItemCaseSensitive(jsonObject, "genre");
+        resume = cJSON_GetObjectItemCaseSensitive(jsonObject, "resume");
+        stock = cJSON_GetObjectItemCaseSensitive(jsonObject, "stock")->child;
+        printf(name->valuestring);
+
+        while(stock) {
+            bookId = cJSON_GetObjectItemCaseSensitive(stock, "bookId");
+            available = cJSON_GetObjectItemCaseSensitive(stock, "available");
+            libroNuevo = crearLibro(bookId->valuestring, name->valuestring, author->valuestring, year->valuestring, genre->valuestring, resume->valuestring, available->valuestring);
+            agregarLibro(libroNuevo, listaLibros);
+            stock = stock->next;
+        }
+        jsonObject = jsonObject->next;
+    }
+    free(fileContent);
+    cJSON_Delete(jsonObject);
+    imprimirListaLibros(listaLibros);
+}
+
+void printBookData(){
+    char* fileContent = getFileContent(bookFileName);
+    
+    cJSON* jsonObject =  cJSON_Parse(fileContent); 
+
+    if (jsonObject == NULL) {
+        printf("Al parecer ha ocurrido un error al leer el json. por favor asegurese de este exista, y tenga el formato correcto.\n");
         free(fileContent);
         
     }
