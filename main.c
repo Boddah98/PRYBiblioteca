@@ -18,6 +18,7 @@ int esNumero(const char *cadena) {
     return TRUE;
 }
 
+//Función para gestionar los catálogos
 void gestionCatalogo() {
 	char direccion[200];
 
@@ -29,14 +30,7 @@ void gestionCatalogo() {
     analizeBookBatch(filePath);
 }
 
-int usuarioExiste(char* idUsuario){
-	return FALSE;
-}
-
-void guardarUsuario(Usuario* usuarioNuevo){
-	//*lo guarda
-}
-
+//Función para gestionar los usuarios
 void gestionUsuario(){
 	int salirIdentidad = TRUE;
 
@@ -69,6 +63,7 @@ void gestionUsuario(){
 	
 }
 
+//Función principal del programa
 int main() {
     int salir = FALSE;
 	int opcion;

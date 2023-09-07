@@ -190,6 +190,7 @@ void analizeBookBatch(const char* fileDocName) {
     free(line);
 }
 
+//Función que lee los datos de los libros almacenados en los json, y los guarda en una lista dinámica.
 void loadBookData(){
     char* fileContent = getFileContent(bookFileName);
     
