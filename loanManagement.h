@@ -61,6 +61,7 @@ void printLoanData(){
         printf("bookName: %s\n", bookName->valuestring);
         printf("deliveryStatus: %s\n", deliveryStatus->valuestring);
         printf("rate: %s\n", rate->valuestring);
+        printf("\n");
         jsonObject = jsonObject->next;
     }
     free(fileContent);

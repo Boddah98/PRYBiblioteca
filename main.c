@@ -92,23 +92,24 @@ int main() {
 				break;
 
 			case 3:
-				printf("Selecciono la opcion 3.\n\n");
+				printf("Prestamos realizados hasta el momento:\n\n");
+				printLoanData();
 				break;
             
 			case 4:
-				printf("Selecciono la opcion 4.\n\n");
+				printf("Lamentablemente no se implemento esta funcionalidad.\n\n");
 				break;
 
             case 5:
-				printf("Selecciono la opcion 5.\n\n");
+				printf("Lamentablemente no se implemento esta funcionalidad.\n\n");
 				break;
 
             case 6:
-				printf("Selecciono la opcion 6.\n\n");
+				printf("Lamentablemente no se implemento esta funcionalidad.\n\n");
 				break;
 
             case 7:
-				printf("El programa ha sido finalizado correctamente.\n\n");
+				printf("Lamentablemente no se implemento esta funcionalidad.\n\n");
                 salir = TRUE;
 				break;
                 	
