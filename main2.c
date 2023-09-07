@@ -7,10 +7,14 @@
 #include "userManagement.h"
 
 int main(){        
-    //printBookData();
-    //insertDataBatch();
-    //getFileData()
-    const char* filePath = "addFile.txt";
-    analizeBookBatch(filePath);
+    char * userId = "115040072";
+    char* name = "Maria Turing";
+    char* address = "England";
+    insertUser(userId,name,address);
+    //checkForUserID(userId);
+    printUserData();
+    //const char* filePath = "addFile.txt";
+    //analizeBookBatch(filePath);
+
     return 0;
 }
