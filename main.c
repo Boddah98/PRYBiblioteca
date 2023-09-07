@@ -4,6 +4,9 @@
 #include <ctype.h>
 #include "Libro.h"
 #include "Usuario.h"
+#include "bookManagement.h"
+#include "loanManagement.h"
+#include "userManagement.h"
 
 // Función para verificar si una cadena contiene solo dígitos
 int esNumero(const char *cadena) {
@@ -16,12 +19,14 @@ int esNumero(const char *cadena) {
 }
 
 void gestionCatalogo() {
-	char direccion[50];
+	char direccion[200];
 
 	printf("Por favor ingrese la direccion: ");
 	scanf(" %[^\t\n]s", &direccion);
 
-	printf("\n-> Mostrando información de lectura...\n\n");
+	printf("\n-> Mostrando informacion de lectura...\n\n");
+	const char* filePath = direccion;
+    analizeBookBatch(filePath);
 }
 
 int usuarioExiste(char* idUsuario){
