@@ -49,7 +49,6 @@ bool checkForUserID(char* idForEvaluate){
 }
 bool insertUser(char * userId, char* name, char* address ){
     if(checkForUserID(userId)){
-        printf("Este id ya ha sido ingresado anteriormente\n");
         return false;
     }
     //Creating cJSON object for add data    
@@ -71,7 +70,6 @@ bool insertUser(char * userId, char* name, char* address ){
     free(json_string);
     fclose(file);
     cJSON_Delete(jsonUserData);    
-    printf(": %s, %s, %s Anadido \n", userId, name, address);
     return true;
 }
 

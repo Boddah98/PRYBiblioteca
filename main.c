@@ -61,9 +61,12 @@ void gestionUsuario(){
 	printf("Ingrese la direccion del usuario: ");
 	scanf(" %[^\t\n]s", &direccion);
 
-	Usuario* usuarioNuevo = crearUsuario(id, nombre, direccion);
-	guardarUsuario(usuarioNuevo);
-	printf("\n-> El usuario ha sido registrado correctamente en el sistema\n\n");
+	if(insertUser(id, nombre, direccion)){
+		printf("\n-> El usuario ha sido registrado correctamente en el sistema\n\n");
+	}else {
+		printf("\nError: Ya existe otro usuario con este numero de identificacion\n\n");
+	}
+	
 }
 
 int main() {
