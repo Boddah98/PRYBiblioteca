@@ -6,16 +6,16 @@
 		"resume":	" la historia de la familia Buendía en el ficticio pueblo Macondo a lo largo de varias generaciones. La obra mezcla realismo mágico y crítica social para explorar temas como el amor, la soledad, la violencia y el poder. La novela sigue la vida de los Buendía, marcada por relaciones incestuosas, profecías y eventos misteriosos. Finalmente, la historia culmina con la última generación y la caída de la casa Buendía, simbolizando la repetición cíclica de la historia en América Latina.",
 		"quantity":	"4",
 		"stock":	[{
-				"bookId":	1,
+				"bookId":	"1",
 				"available":	"true"
 			}, {
-				"bookId":	2,
+				"bookId":	"2",
 				"available":	"true"
 			}, {
-				"bookId":	3,
+				"bookId":	"3",
 				"available":	"true"
 			}, {
-				"bookId":	4,
+				"bookId":	"4",
 				"available":	"true"
 			}]
 	}, {
@@ -26,16 +26,16 @@
 		"resume":	"1984 es una novela distópica de George Orwell que se desarrolla en un mundo totalitario bajo el gobierno del Partido y su líder, Big Brother. La historia sigue a Winston Smith, un hombre que trabaja en el Ministerio de la Verdad y lucha por mantener su individualidad en un estado de vigilancia constante. La novela explora temas como la manipulación del lenguaje, la represión del pensamiento y la erosión de la verdad. Winston se rebela contra el régimen opresivo, pero finalmente es sometido a la tortura y la conformidad total. 1984 es una advertencia sobre el poder absoluto y la pérdida de libertad en una sociedad controlada por el Estado.",
 		"quantity":	"4",
 		"stock":	[{
-				"bookId":	1,
+				"bookId":	"1",
 				"available":	"true"
 			}, {
-				"bookId":	2,
+				"bookId":	"2",
 				"available":	"true"
 			}, {
-				"bookId":	3,
+				"bookId":	"3",
 				"available":	"true"
 			}, {
-				"bookId":	4,
+				"bookId":	"4",
 				"available":	"true"
 			}]
 	}, {

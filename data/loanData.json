@@ -1,5 +1,15 @@
 [{
-    
+    "loanID" : "1",
+    "bookID" : "1",
+    "userID" : "1",
+    "nameBook" : "Crónica de una muerte anunciada",
+    "deliveryDate" : "",
+    "deliveryStatus" : ""    
 },{
-
+    "loanID" : "2",
+    "bookID" : "2",
+    "userID" : "2",
+    "nameBook" : "Cien años de soledad",
+    "deliveryDate" : "",
+    "date" : ""
 }]
