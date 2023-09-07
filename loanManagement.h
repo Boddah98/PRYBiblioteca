@@ -43,13 +43,18 @@ void printLoanData(){
     }
         
     jsonObject = jsonObject->child; 
-
+    cJSON* loanID;
+    cJSON* userID;
+    cJSON* bookName;
+    cJSON* deliveryStatus;
+    cJSON* rate;
+        
     while (jsonObject) {
-        cJSON* loanID = cJSON_GetObjectItemCaseSensitive(jsonObject, "loanID");
-        cJSON* userID = cJSON_GetObjectItemCaseSensitive(jsonObject, "userID");
-        cJSON* bookName = cJSON_GetObjectItemCaseSensitive(jsonObject, "bookName");
-        cJSON* deliveryStatus = cJSON_GetObjectItemCaseSensitive(jsonObject, "deliveryStatus");
-        cJSON* rate = cJSON_GetObjectItemCaseSensitive(jsonObject, "rate");
+        loanID = cJSON_GetObjectItemCaseSensitive(jsonObject, "loanID");
+        userID = cJSON_GetObjectItemCaseSensitive(jsonObject, "userID");
+        bookName = cJSON_GetObjectItemCaseSensitive(jsonObject, "bookName");
+        deliveryStatus = cJSON_GetObjectItemCaseSensitive(jsonObject, "deliveryStatus");
+        rate = cJSON_GetObjectItemCaseSensitive(jsonObject, "rate");
         
         printf("loanID: %s\n", loanID->valuestring);
         printf("userID: %s\n", userID->valuestring);
